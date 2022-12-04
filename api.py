@@ -12,7 +12,6 @@ def get_all_restaurants():
 
 @app.route(PATH + "postLunchSelection", methods=['POST'])
 def post_lunch():
-    print(json.loads(request.data)["id"])
-    return json.jsonify({"link_url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"})
+    return json.jsonify({"link_url": restaurant_repository.get_meal_from_restaurant(json.loads(request.data)["id"])})
 
 app.run()
